@@ -187,3 +187,30 @@ REST API для организации работы бассейна
     "time": string
 ]}
 ```
+
+### Струкутра таблиц в MySQL
+
+#### Диаграмма
+![UML_Database](https://user-images.githubusercontent.com/38080282/188320654-4dafa5b0-4dd3-4631-a604-842d492e5901.JPG)
+
+#### Код создания таблиц
+##### Таблица клиентов
+```
+CREATE TABLE clients (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    phone VARCHAR(50),
+    email VARCHAR(50)
+)
+```
+
+##### Таблица записей
+```
+CREATE TABLE timetable (
+    order_id VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
+    date_ DATE,
+    time_ TIME,
+    client_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY(client_id) REFERENCES clients(id) ON DELETE CASCADE
+)
+```
