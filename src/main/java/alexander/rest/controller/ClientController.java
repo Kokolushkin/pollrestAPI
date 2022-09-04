@@ -1,9 +1,7 @@
 package alexander.rest.controller;
 
-import alexander.rest.services.ClientDAO;
+import alexander.rest.services.ClientService;
 import alexander.rest.model.Client;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,30 +10,30 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v0/pool/client")
 public class ClientController {
 
-    private final ClientDAO clientDAO;
+    private final ClientService clientService;
 
     @Autowired
-    public ClientController(ClientDAO clientDAO) {
-        this.clientDAO = clientDAO;
+    public ClientController(ClientService clientService) {
+        this.clientService = clientService;
     }
 
     @GetMapping(value = "/all")
-    public JsonArray getClients(Model model){
-        return clientDAO.getClients();
+    public String getClients(Model model){
+        return clientService.getClients().toString();
     }
 
     @GetMapping("/get/{id}")
-    public JsonObject getClient(@PathVariable("id") Number id){
-        return clientDAO.getClient(id);
+    public String getClient(@PathVariable("id") Number id){
+        return clientService.getClient(id).toString();
     }
 
     @PostMapping("/add")
     public void add(@RequestBody Client client){
-        clientDAO.add(client);
+        clientService.add(client);
     }
 
     @PostMapping("/update")
     public void addClient(@RequestBody Client client){
-        clientDAO.update(client);
+        clientService.update(client);
     }
 }

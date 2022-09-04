@@ -198,7 +198,7 @@ REST API для организации работы бассейна
 ```
 CREATE TABLE clients (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL UNIQUE,
     phone VARCHAR(50),
     email VARCHAR(50)
 )

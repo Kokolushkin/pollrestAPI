@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 import java.sql.*;
 
 @Service
-public class ClientDAO {
+public class ClientService {
     private static final String UPDATE_QUERY = "UPDATE clients SET name=?, phone=?, email=? WHERE id=?";
     private static final String INSERT_QUERY = "INSERT INTO clients (name, phone, email) VALUES (?, ?, ?)";
     private static final String SELECT_QUERY = "SELECT * FROM clients WHERE id=?";
 
     private static Connection connection;
 
-    public ClientDAO(){
+    public ClientService(){
         connection = ConnectionHelper.getConnection();
     }
 
@@ -92,7 +92,7 @@ public class ClientDAO {
     }
 
     private void validateClientData(String phone, String email) {
-        Validator.validateTelephoneNumber(phone);
-        Validator.validateEmail(email);
+            Validator.validateTelephoneNumber(phone);
+            Validator.validateEmail(email);
     }
 }

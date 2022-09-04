@@ -78,7 +78,7 @@ public class TimeTableService {
             return result;
         }
 
-        if(numberOfBookedPerPerson(splittedDateTime[0], timeTable.getClientId()) > MAX_NUMBER_VISIT){
+        if(numberOfBookedPerPerson(splittedDateTime[0], timeTable.getClientId()) >= MAX_NUMBER_VISIT){
             System.out.println("It is not possible to book more than twice on the same day");
             return result;
         }

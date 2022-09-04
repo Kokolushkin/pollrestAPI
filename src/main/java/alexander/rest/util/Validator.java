@@ -68,7 +68,7 @@ public class Validator {
      *         throw {@link IllegalArgumentException} - All other cases.
      */
     public static boolean validateEmail(String email){
-        if(EmailValidator.getInstance().isValid(email)){
+        if(!EmailValidator.getInstance().isValid(email)){
             throw new IllegalArgumentException("Invalid email format");
         }
 
